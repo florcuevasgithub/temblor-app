@@ -179,7 +179,7 @@ if submitted and archivo_reposo and archivo_postural and archivo_accion:
 
     # Si es vacío, "nan" o "none", usar "Paciente"
     if not nombre_paciente or nombre_paciente.lower() in ["nan", "none"]:
-    nombre_paciente = "Paciente"
+        nombre_paciente = "Paciente"
 
 # Generar nombre del PDF
 nombre_pdf = f"Informe_Temblor_{nombre_paciente.replace(' ', '_')}.pdf"
