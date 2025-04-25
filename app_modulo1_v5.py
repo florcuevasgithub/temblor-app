@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1pZITxUtXnMXEZxcSudFRRkiLmbZrE7XU
 """
 
--- coding: utf-8 --
 
 import streamlit as st import pandas as pd import numpy as np import matplotlib.pyplot as plt from scipy.fft import fft, fftfreq from fpdf import FPDF import tempfile import os from datetime import datetime
 
