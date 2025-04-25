@@ -176,4 +176,4 @@ if submitted and archivo_reposo and archivo_postural and archivo_accion:
     nombre_pdf = f"Informe_Temblor_{nombre_paciente.replace(' ', '_')}.pdf"
 
     with open(path_pdf, "rb") as f:
-    st.download_button("📄 Descargar Informe PDF", f, file_name=nombre_pdf)
+        st.download_button("📄 Descargar Informe PDF", f, file_name=nombre_pdf)
