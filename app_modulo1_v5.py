@@ -8,7 +8,14 @@ Original file is located at
 """
 
 
-import streamlit as st import pandas as pd import numpy as np import matplotlib.pyplot as plt from scipy.fft import fft, fftfreq from fpdf import FPDF import tempfile import os from datetime import datetime
+import streamlit as st 
+import pandas as pd 
+import numpy as np 
+import matplotlib.pyplot as plt from scipy.fft 
+import fft, fftfreq from fpdf 
+import FPDF import tempfile 
+import os from datetime 
+import datetime
 
 def procesar_archivo(uploaded_file): datos_completos = pd.read_csv(uploaded_file) datos_personales = datos_completos.iloc[0, :].to_frame().T datos_personales.reset_index(drop=True, inplace=True) mediciones = datos_completos.iloc[1:, :] mediciones = mediciones[['Acel_X', 'Acel_Y', 'Acel_Z', 'GiroX', 'GiroY', 'GiroZ']] mediciones = mediciones.apply(pd.to_numeric, errors='coerce') return datos_personales, mediciones
 
