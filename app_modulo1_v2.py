@@ -173,13 +173,13 @@ if submitted and archivo_reposo and archivo_postural and archivo_accion:
     st.success("Análisis finalizado.")
 
     nombre_paciente = datos_personales.iloc[0, 0] if not datos_personales.empty else "Informe"
-    # Obtener nombre del paciente de forma segura
-    nombre_raw = datos_personales.iloc[0, 0] if not datos_personales.empty else ""
-    nombre_paciente = str(nombre_raw).strip()
+# Obtener nombre del paciente de forma segura
+nombre_raw = datos_personales.iloc[0, 0] if not datos_personales.empty else ""
+nombre_paciente = str(nombre_raw).strip()
 
-    # Si es vacío, "nan" o "none", usar "Paciente"
-    if not nombre_paciente or nombre_paciente.lower() in ["nan", "none"]:
-        nombre_paciente = "Paciente"
+# Si es vacío, "nan" o "none", usar "Paciente"
+if not nombre_paciente or nombre_paciente.lower() in ["nan", "none"]:
+    nombre_paciente = "Paciente"
 
 # Generar nombre del PDF
 nombre_pdf = f"Informe_Temblor_{nombre_paciente.replace(' ', '_')}.pdf"
