@@ -128,7 +128,11 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
 
     # Compactar resultados
     df_resultados = pd.DataFrame(resultados, columns=["Test", "Eje", "Freq_Dom", "Varianza", "RMS", "Max_Despl"])
-    resumen = df_resultados.groupby("Test").mean().reset_index()
+    # Compactar resultados
+    df_resultados = pd.DataFrame(resultados, columns=["Test", "Eje", "Freq_Dom", "Varianza", "RMS", "Max_Despl"])
+
+    # Solo quedarse con columnas numéricas
+    resumen = df_resultados.groupby("Test")[["Freq_Dom", "Varianza", "RMS", "Max_Despl"]].mean().reset_index()
 
     pdf.set_font("Arial", 'B', 9)
     pdf.cell(40, 8, "Test", 1)
