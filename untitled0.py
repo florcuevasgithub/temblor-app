@@ -16,6 +16,9 @@ from fpdf import FPDF
 import tempfile
 import os
 from datetime import datetime
+from fpdf import FPDF
+import tempfile
+import os
 
 # Función para procesar cada archivo y devolver info útil
 def procesar_archivo(uploaded_file):
@@ -96,23 +99,27 @@ def diagnostico_global(resultados):
         return comparativo, "Normal"
 
 # PDF
+# Función para generar el PDF
 def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes):
     pdf = FPDF()
     pdf.add_page()
-    pdf.set_font("Arial", 'B', 16)
+
+    # Usamos una fuente TrueType para manejar Unicode
+    pdf.add_font('ArialUnicode', '', '/usr/share/fonts/truetype/msttcorefonts/Arial.ttf', uni=True)
+    pdf.set_font("ArialUnicode", '', 12)
+
     pdf.cell(0, 10, "🧠 Informe de Diagnóstico de Temblor", ln=True, align='C')
-    pdf.set_font("Arial", '', 12)
-    pdf.multi_cell(0, 10, "Análisis de pruebas: reposo, postural y acción.\n")
-    
+    pdf.ln(10)
+
     # Información del Paciente
-    pdf.cell(0, 10, "\nInformación del Paciente:", ln=True)
+    pdf.cell(0, 10, "Información del Paciente:", ln=True)
     for col in datos_personales.columns:
         val = datos_personales[col].values[0] if not pd.isna(datos_personales[col].values[0]) else "Sin info"
         pdf.cell(0, 10, f"{col}: {val}", ln=True)
 
     # Resultados
-    pdf.cell(0, 10, "\nResultados del Análisis:", ln=True)
-    pdf.set_font("Arial", 'B', 10)
+    pdf.ln(10)
+    pdf.set_font("ArialUnicode", 'B', 10)
     pdf.cell(30, 10, "Test", 1)
     pdf.cell(20, 10, "Eje", 1)
     pdf.cell(40, 10, "Freq. Dom (Hz)", 1)
@@ -120,7 +127,8 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
     pdf.cell(20, 10, "RMS", 1)
     pdf.cell(50, 10, "Max. Desplaz. (cm)", 1)
     pdf.ln()
-    pdf.set_font("Arial", '', 9)
+
+    pdf.set_font("ArialUnicode", '', 9)
     for r in resultados:
         pdf.cell(30, 10, r[0], 1)
         pdf.cell(20, 10, r[1], 1)
@@ -132,11 +140,12 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
 
     # Diagnóstico Comparativo
     pdf.add_page()
-    pdf.set_font("Arial", 'B', 12)
+    pdf.set_font("ArialUnicode", 'B', 12)
     pdf.cell(0, 10, "Diagnóstico Comparativo:", ln=True)
-    pdf.set_font("Arial", '', 10)
+    pdf.set_font("ArialUnicode", '', 10)
     for fila in comparativo:
         pdf.cell(0, 10, f"{fila[0]} - {fila[1]}: {fila[2]}", ln=True)
+
     pdf.cell(0, 10, f"\nDiagnóstico Global: {global_diag}", ln=True)
 
     # Gráficos
