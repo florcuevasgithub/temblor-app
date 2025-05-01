@@ -104,9 +104,9 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
     pdf = FPDF()
     pdf.add_page()
 
-    # Usamos una fuente TrueType para manejar Unicode
-    pdf.add_font('ArialUnicode', '', '/usr/share/fonts/truetype/msttcorefonts/Arial.ttf', uni=True)
-    pdf.set_font("ArialUnicode", '', 12)
+    # Usamos una fuente TrueType local para manejar Unicode
+    pdf.add_font('DejaVuSans', '', 'fonts/DejaVuSans.ttf', uni=True)  # Cambia el path si es necesario
+    pdf.set_font("DejaVuSans", '', 12)
 
     pdf.cell(0, 10, "🧠 Informe de Diagnóstico de Temblor", ln=True, align='C')
     pdf.ln(10)
@@ -119,7 +119,7 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
 
     # Resultados
     pdf.ln(10)
-    pdf.set_font("ArialUnicode", 'B', 10)
+    pdf.set_font("DejaVuSans", 'B', 10)
     pdf.cell(30, 10, "Test", 1)
     pdf.cell(20, 10, "Eje", 1)
     pdf.cell(40, 10, "Freq. Dom (Hz)", 1)
@@ -128,7 +128,7 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
     pdf.cell(50, 10, "Max. Desplaz. (cm)", 1)
     pdf.ln()
 
-    pdf.set_font("ArialUnicode", '', 9)
+    pdf.set_font("DejaVuSans", '', 9)
     for r in resultados:
         pdf.cell(30, 10, r[0], 1)
         pdf.cell(20, 10, r[1], 1)
@@ -140,9 +140,9 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
 
     # Diagnóstico Comparativo
     pdf.add_page()
-    pdf.set_font("ArialUnicode", 'B', 12)
+    pdf.set_font("DejaVuSans", 'B', 12)
     pdf.cell(0, 10, "Diagnóstico Comparativo:", ln=True)
-    pdf.set_font("ArialUnicode", '', 10)
+    pdf.set_font("DejaVuSans", '', 10)
     for fila in comparativo:
         pdf.cell(0, 10, f"{fila[0]} - {fila[1]}: {fila[2]}", ln=True)
 
@@ -157,7 +157,6 @@ def generar_pdf(datos_personales, resultados, comparativo, global_diag, imagenes
     temp_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
     pdf.output(temp_path)
     return temp_path
-
 # Interfaz Streamlit
 st.title("🧠 Análisis de Temblor - Test Clínico 1")
 st.markdown("Cargá los tres archivos CSV correspondientes a Reposo, Postural y Acción para comenzar el análisis.")
