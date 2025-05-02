@@ -15,6 +15,8 @@ from scipy.signal import detrend, hann
 from fpdf import FPDF
 from datetime import datetime
 import os
+from scipy.signal import detrend
+from scipy.signal.windows import hann
 
 st.set_page_config(page_title="Análisis de Temblores", layout="wide")
 
