@@ -81,8 +81,8 @@ def crear_grafico(df, nombre):
 def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, mano, dedo, diagnostico_auto, df):
     import unicodedata
     def sanear_texto(texto):
-    texto = texto.replace("–", "-")  # guion largo por guion normal
-    return unicodedata.normalize('NFKD', texto).encode('latin1', 'ignore').decode('latin1')
+        texto = texto.replace("–", "-")  # guion largo por guion normal
+        return unicodedata.normalize('NFKD', texto).encode('latin1', 'ignore').decode('latin1')
     fecha_hora = (datetime.now() - timedelta(hours=3)).strftime("%d/%m/%Y %H:%M")
     pdf = FPDF()
     pdf.add_page()
