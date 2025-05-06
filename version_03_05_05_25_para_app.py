@@ -118,7 +118,7 @@ def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, ma
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(200, 10, "Interpretación clínica:", ln=True)
     pdf.set_font("Arial", size=11)
-    texto_limpio = limpiar_texto_para_pdf.multi_cell(0, 8, """
+    texto_original = """
 Este informe analiza tres tipos de temblores: en reposo, postural y de acción.
 
 Los valores de referencia considerados son:
@@ -126,11 +126,11 @@ Los valores de referencia considerados son:
 - Temblor Parkinsoniano: 3-6 Hz en reposo.
 - Temblor Esencial: 8-10 Hz en acción o postura.
 
-  Para las amplitudes 
+  Para las amplitudes:
 - Mayores a 0.3 cm pueden ser clínicamente relevantes.
 
-  Para la varianza (m2/s4) :
-Representa la dispersión del temblor, en el contexto de temblores:
+  Para la varianza (m2/s4):
+Representa la dispersión de la señal. En el contexto de temblores:
 - Normal/sano: muy baja, puede estar entre 0.001 – 0.1 m2/s4.
 - Temblor leve: entre 0.1 – 0.5 m2/s4.
 - Temblor patológico (PK o TE): suele superar 1.0 m2/s4, llegando hasta 5–10 m2/s4 en casos severos.
@@ -141,7 +141,10 @@ Representa la dispersión del temblor, en el contexto de temblores:
 - TE o PK severo: puede llegar a 2–3 m/s2 o más.
 
 La clasificación automática es orientativa y debe ser evaluada por un profesional.
-""")
+"""
+
+texto_limpio = limpiar_texto_para_pdf(texto_original)
+pdf.multi_cell(0, 8, texto_limpio)
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(200, 10, f"Diagnóstico automático: {diagnostico_auto}", ln=True)
 
