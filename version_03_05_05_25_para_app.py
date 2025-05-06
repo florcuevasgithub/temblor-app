@@ -134,16 +134,16 @@ Los valores de referencia considerados son:
   Para las amplitudes 
 - Mayores a 0.3 cm pueden ser clínicamente relevantes.
 
-  Para la varianza (m²/s⁴) :
+  Para la varianza (m2/s4) :
 Representa la dispersión de la señal, en el contexto de temblores:
--Normal/sano: muy baja, puede estar entre 0.001 – 0.1 m²/s⁴.
--Temblor leve: entre 0.1 – 0.5 m²/s⁴.
--Temblor patológico (PK o TE): suele superar 1.0 m²/s⁴, llegando hasta 5–10 m²/s⁴ en casos severos.
+-Normal/sano: muy baja, puede estar entre 0.001 – 0.1 m2/s4.
+-Temblor leve: entre 0.1 – 0.5 m2/s4.
+-Temblor patológico (PK o TE): suele superar 1.0 m2/s4, llegando hasta 5–10 m2/s4 en casos severos.
 
-  Para el RMS (m/s²):
-- Normal/sano: menor a 0.5 m/s².
-- PK leve: entre 0.5 y 1.5 m/s².
-- TE o PK severo: puede llegar a 2–3 m/s² o más.
+  Para el RMS (m/s2):
+- Normal/sano: menor a 0.5 m/s2.
+- PK leve: entre 0.5 y 1.5 m/s2.
+- TE o PK severo: puede llegar a 2–3 m/s2 o más.
 
 La clasificación automática es orientativa y debe ser evaluada por un profesional.
 """)
