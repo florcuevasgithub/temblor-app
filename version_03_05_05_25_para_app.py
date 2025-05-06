@@ -21,11 +21,11 @@ import os
 
 # --------- Funciones auxiliares ----------
 
-def filtrar_temblor(signal, fs=50):
+def filtrar_temblor(signal, fs=200):
     b, a = butter(N=4, Wn=[3, 12], btype='bandpass', fs=fs)
     return filtfilt(b, a, signal)
 
-def analizar_temblor_por_ventanas(signal, eje, fs=50, ventana_seg=2):
+def analizar_temblor_por_ventanas(signal, eje, fs=200, ventana_seg=2):
     signal = signal.dropna().to_numpy()
     signal_filtrada = filtrar_temblor(signal, fs)
 
