@@ -74,6 +74,7 @@ def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, ma
     import unicodedata
     def limpiar_texto_para_pdf(texto):
         return unicodedata.normalize("NFKD", texto).encode("ASCII", "ignore").decode("ASCII")
+    texto_clinico = diag_clinico if pd.notna(diag_clinico) and str(diag_clinico).strip() != "" else "Sin diagnóstico previo"
     fecha_hora = (datetime.now() - timedelta(hours=3)).strftime("%d/%m/%Y %H:%M")
     pdf = FPDF()
     pdf.add_page()
@@ -86,7 +87,7 @@ def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, ma
     pdf.cell(200, 10, f"Apellido: {apellido_paciente}", ln=True)
     pdf.cell(200, 10, f"Edad: {edad}", ln=True)
     pdf.cell(200, 10, f"Sexo: {sexo}", ln=True)
-    pdf.cell(200, 10, f"Diagnóstico clínico: {diag_clinico}", ln=True)
+    pdf.cell(200, 10, f"Diagnóstico clínico: {texto_clinico}", ln=True)
     pdf.cell(200, 10, f"Mano: {mano}", ln=True)
     pdf.cell(200, 10, f"Dedo: {dedo}", ln=True)
     pdf.cell(200, 10, f"Fecha y hora: {fecha_hora}", ln=True)
