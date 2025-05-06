@@ -127,9 +127,23 @@ def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, ma
 Este informe analiza tres tipos de temblores: en reposo, postural y de acción.
 
 Los valores de referencia considerados son:
+  Para las frecuencias (Hz):
 - Temblor Parkinsoniano: 3-6 Hz en reposo.
 - Temblor Esencial: 8-10 Hz en acción o postura.
-- Amplitudes > 0.3 cm pueden ser clínicamente relevantes.
+
+  Para las amplitudes 
+- Mayores a 0.3 cm pueden ser clínicamente relevantes.
+
+  Para la varianza (m²/s⁴) :
+Representa la dispersión de la señal, en el contexto de temblores:
+-Normal/sano: muy baja, puede estar entre 0.001 – 0.1 m²/s⁴.
+-Temblor leve: entre 0.1 – 0.5 m²/s⁴.
+-Temblor patológico (PK o TE): suele superar 1.0 m²/s⁴, llegando hasta 5–10 m²/s⁴ en casos severos.
+
+  Para el RMS (m/s²):
+- Normal/sano: menor a 0.5 m/s².
+- PK leve: entre 0.5 y 1.5 m/s².
+- TE o PK severo: puede llegar a 2–3 m/s² o más.
 
 La clasificación automática es orientativa y debe ser evaluada por un profesional.
 """)
