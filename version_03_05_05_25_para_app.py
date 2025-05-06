@@ -71,6 +71,9 @@ def crear_grafico(df, nombre):
     plt.close()
 
 def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, mano, dedo, diagnostico_auto, df):
+    import unicodedata
+    def limpiar_texto_para_pdf(texto):
+        return unicodedata.normalize("NFKD", texto).encode("ASCII", "ignore").decode("ASCII")
     fecha_hora = (datetime.now() - timedelta(hours=3)).strftime("%d/%m/%Y %H:%M")
     pdf = FPDF()
     pdf.add_page()
@@ -115,7 +118,7 @@ def generar_pdf(nombre_paciente, apellido_paciente, edad, sexo, diag_clinico, ma
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(200, 10, "Interpretación clínica:", ln=True)
     pdf.set_font("Arial", size=11)
-    pdf.multi_cell(0, 8, """
+    texto_limpio = limpiar_texto_para_pdf.multi_cell(0, 8, """
 Este informe analiza tres tipos de temblores: en reposo, postural y de acción.
 
 Los valores de referencia considerados son:
